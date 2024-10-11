@@ -1,6 +1,8 @@
+use serde::{Deserialize, Serialize};
+
 /// Any ANSI color code scheme
 #[allow(clippy::exhaustive_enums)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 pub enum Color {
     /// Available 4-bit ANSI color palette codes
     ///
@@ -133,7 +135,7 @@ impl From<(u8, u8, u8)> for Color {
 ///
 /// The user's terminal defines the meaning of the each palette code.
 #[allow(clippy::exhaustive_enums)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 #[repr(u8)]
 pub enum AnsiColor {
     /// Black: #0 (foreground code `30`, background code `40`).
@@ -347,7 +349,7 @@ impl AnsiColor {
 /// - `0..232` map to [`RgbColor`] color values
 /// - `232..` map to [`RgbColor`] gray-scale values
 #[allow(clippy::exhaustive_structs)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 #[repr(transparent)]
 pub struct Ansi256Color(pub u8);
 
@@ -472,7 +474,7 @@ impl From<AnsiColor> for Ansi256Color {
 
 /// 24-bit ANSI RGB color codes
 #[allow(clippy::exhaustive_structs)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 pub struct RgbColor(pub u8, pub u8, pub u8);
 
 impl RgbColor {

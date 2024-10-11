@@ -30,6 +30,7 @@ default = ["std"]
 std = []
 
 [dependencies]
+serde = { version = "1.0.210", features = ["derive"] }
 
 [dev-dependencies]
 lexopt = "0.3.0"
